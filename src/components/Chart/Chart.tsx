@@ -11,7 +11,7 @@ const HighchartsReact = dynamic(() => import("highcharts-react-official"), {
 const Chart = () => {
   const [currency, setCurrency] = useState<string>("USD-BRL");
   const [chartData, setChartData] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(false); // Adicionar estado de loading
+  const [loading, setLoading] = useState<boolean>(false);
 
   const currencies = [
     { code: "USD-BRL", label: "BRL- Dólar (USD)" },
@@ -106,12 +106,12 @@ const Chart = () => {
   return (
     <div className="bg-slate-100 min-h-screen">
       <div className="max-w-6xl mx-auto mt-20 p-5">
-        <div className="mb-5 flex gap-4 justify-center">
+        <div className="mb-5 flex flex-col sm:flex-row gap-4 justify-center">
           {currencies.map((currencyItem) => (
             <button
               key={currencyItem.code}
               onClick={() => setCurrency(currencyItem.code)}
-              className="btn btn-primary"
+              className="btn btn-primary w-full sm:w-auto"
               disabled={loading}
             >
               {currencyItem.label}
@@ -127,7 +127,9 @@ const Chart = () => {
 
         <div className="bg-white p-10 rounded-lg max-w-full mx-auto flex justify-center items-center flex-col gap-3">
           {!loading && chartData.length > 0 ? (
-            <HighchartsReact highcharts={Highcharts} options={options} />
+            <div className="w-full">
+              <HighchartsReact highcharts={Highcharts} options={options} />
+            </div>
           ) : (
             !loading && (
               <div className="text-center mt-4 text-gray-700">
