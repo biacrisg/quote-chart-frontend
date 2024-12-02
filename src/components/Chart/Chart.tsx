@@ -21,15 +21,18 @@ const Chart = () => {
 
   const fetchCurrencyData = async (currencyCode: string, days: number) => {
     try {
-      setLoading(true); 
-      const res = await fetch("http://localhost:8080/v1/quote", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Currency: currencyCode,
-          Days: days.toString(),
-        },
-      });
+      setLoading(true);
+      const res = await fetch(
+        "https://chart-app-currency-new-1cf60e87e39e.herokuapp.com/v1/quote",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Currency: currencyCode,
+            Days: days.toString(),
+          },
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Erro ao buscar dados");

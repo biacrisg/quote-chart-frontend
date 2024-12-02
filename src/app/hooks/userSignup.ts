@@ -18,7 +18,7 @@ const useSignup = () => {
         setSuccessMessage(null);
 
         try {
-            const res = await fetch("http://localhost:8080/auth/signup", {
+            const res = await fetch("https://chart-app-currency-new-1cf60e87e39e.herokuapp.com/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

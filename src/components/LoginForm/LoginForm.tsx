@@ -19,13 +19,16 @@ export default function LoginForm() {
     };
 
     try {
-      const res = await fetch("http://localhost:8080/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        "https://chart-app-currency-new-1cf60e87e39e.herokuapp.com/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Erro na autenticação");
